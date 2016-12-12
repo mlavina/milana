@@ -1,5 +1,8 @@
 var express = require('express');
-let app = express();
+var path = require('path');
+var app = express();
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname +'/dist'));
+app.use(express.static(path.join(__dirname +'dist')));
+var port = process.env.PORT || 5000;
+app.listen(port);
+console.log('Server started on ' + port);

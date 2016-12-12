@@ -9,13 +9,11 @@
     "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "start": "node server.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "vue": "^2.1.0"
-  },
-  "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",
@@ -69,7 +67,8 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.14.1"
+    "webpack-merge": "^0.14.1",
+    "vue": "^2.1.0"
   },
   "engines": {
     "node": ">= 6.0.0",
