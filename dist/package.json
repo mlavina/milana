@@ -1,0 +1,10 @@
+{
+  "name": "milana",
+  "version": "1.0.0",
+  "description": "Michael and Ilana Quiz",
+  "author": "Michael Lavina",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
