@@ -2,16 +2,19 @@
   <div id="app">
     <img src="./assets/logo.png">
     <hello></hello>
+    <question></question>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello';
+import Question from './components/Question';
 
 export default {
   name: 'app',
   components: {
     Hello,
+    Question,
   },
 };
 </script>
