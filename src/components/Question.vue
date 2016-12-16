@@ -1,6 +1,6 @@
 <template>
   <div >
-    <aside class='ribbon' @click="showQuestion = true" >Question {{ questionNum }} </aside>
+    <aside class='ribbon' @click="showQuestion = true" >{{ question }} </aside>
     <modal v-show="showQuestion" @close="modalClosed()" class="question-text">
       <h2 slot="header">{{ title }}</h2>
       <iframe slot="body" width="560" height="315" :src="url" frameborder="0" allowfullscreen></iframe>
@@ -27,7 +27,7 @@
     data() {
       return {
         url: questions[this.$route.params.num].url,
-        questionNum: questions[this.$route.params.num].questionNum,
+        question: 'Start Quiz',
         options: questions[this.$route.params.num].options,
         answer: questions[this.$route.params.num].answer,
         title: questions[this.$route.params.num].title,
@@ -39,7 +39,7 @@
     watch: {
       $route(to) {
         this.url = questions[to.params.num].url;
-        this.questionNum = questions[to.params.num].questionNum;
+        this.question = `Question ${questions[this.$route.params.num].questionNum}`;
         this.options = questions[to.params.num].options;
         this.answer = questions[to.params.num].answer;
         this.title = questions[to.params.num].title;
@@ -57,6 +57,7 @@
         this.$router.push({ path: `${nextQuestionNum}` });
       },
       modalClosed() {
+        this.question = this.question = `Question ${questions[this.$route.params.num].questionNum}`;
         this.showQuestion = false;
         this.showAnswers = true;
       },
