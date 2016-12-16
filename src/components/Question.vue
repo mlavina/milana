@@ -5,8 +5,16 @@
       <h2 slot="header">{{ title }}</h2>
       <iframe slot="body" width="560" height="315" :src="url" frameborder="0" allowfullscreen></iframe>
     </modal>
-    <div :key="questionNum" v-show="showAnswers" v-for="option in options" @click="nextQuestion()" class="option">
-      {{ option }}
+    <div v-show="showAnswers">
+      <div v-if="imgOptions" class="imageOptions">
+        <figure v-for="(imgOption, index) in imgOptions">
+          <img :src="imgOption" height="200" width="100" class="imageOption" />
+          <figcaption>{{ index + 1 }}</figcaption>
+        </figure>
+      </div>
+      <div :key="questionNum" v-for="option in options" @click="nextQuestion()" class="option">
+        {{ option }}
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +31,7 @@
         options: questions[this.$route.params.num].options,
         answer: questions[this.$route.params.num].answer,
         title: questions[this.$route.params.num].title,
+        imgOptions: questions[this.$route.params.num].imgOptions,
         showQuestion: false,
         showAnswers: false,
       };
@@ -34,6 +43,7 @@
         this.options = questions[to.params.num].options;
         this.answer = questions[to.params.num].answer;
         this.title = questions[to.params.num].title;
+        this.imgOptions = questions[to.params.num].imgOptions;
         this.showQuestion = false;
         this.showAnswers = false;
       },
@@ -143,5 +153,14 @@ aside:before, aside:after {
   width: 0;
   border-style: solid;
   border-width: 0;
+}
+
+.imageOptions{
+  display: flex;
+  justify-content: center;
+}
+
+.imageOption{
+  margin: 10px 25px 10px 25px;
 }
 </style>

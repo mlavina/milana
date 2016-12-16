@@ -22,6 +22,12 @@ export default [
       '4',
     ],
     answer: 0,
+    imgOptions: [
+      '../static/dress1.jpg',
+      '../static/dress2.jpg',
+      '../static/dress3.jpg',
+      '../static/dress4.jpg',
+    ],
   },
   {
     questionNum: 3,
@@ -61,8 +67,8 @@ export default [
   },
   {
     questionNum: 6,
-    title: 'At what Restaurant did Michael’s Family and Ilana’s Grandmother, Marion, first meet?',
-    url: 'https://www.youtube.com/embed/dUs5For-Jpc?rel=0&amp;wmode=transparent',
+    title: 'At what Restaurant did Michael’s Family and Grandma Marion first meet?',
+    url: 'https://www.youtube.com/embed/vTYZTKDHSDA',
     options: [
       'Tatiana',
       'Stolovaya ',
@@ -97,7 +103,7 @@ export default [
   },
   {
     questionNum: 9,
-    title: 'The following song inspired the Moon couple painting that Ilana and Michael painted?',
+    title: 'The following song inspired the Moon painting that Ilana and Michael painted hanging in Ilana\'s room?',
     url: 'https://www.youtube.com/embed/GwNKVG8y1Eg',
     options: [
       'I’m Your Moon by Jonathon Coulton',
@@ -121,7 +127,7 @@ export default [
   },
   {
     questionNum: 11,
-    title: 'For their first anniversary of being a couple Michael and Ilana went to which of the following locations?',
+    title: 'For their first anniversary as couple Michael and Ilana went to which of the following locations?',
     url: 'https://www.youtube.com/embed/CGwXl3D-iOs?rel=0&amp;wmode=transparent',
     options: [
       'Ocean City, Maryland',
@@ -145,7 +151,7 @@ export default [
   },
   {
     questionNum: 13,
-    title: 'In the following cafe Ilana had proved herself to be great and even better board game player than Michael?',
+    title: 'At the following cafe Ilana had proved herself to be great and even better board game player than Michael?',
     url: 'https://www.youtube.com/embed/ZKRpWKWUnE0?rel=0&amp;wmode=transparent',
     options: [
       'Twenty Sided Die',
@@ -169,18 +175,6 @@ export default [
   },
   {
     questionNum: 15,
-    title: 'Ilana and Michael met for the first time in which of the following stores?',
-    url: 'https://www.youtube.com/embed/b8iEjnhmy6Y',
-    options: [
-      'Target',
-      'BJs',
-      'Costco',
-      'Walmart',
-    ],
-    answer: 3,
-  },
-  {
-    questionNum: 16,
     title: "Which of these is the closest stop on the D train to Ilana's grandma and Michael's mother's house?",
     url: 'https://www.youtube.com/embed/PvUz6KlE0Uc',
     options: [
@@ -192,9 +186,21 @@ export default [
     answer: 1,
   },
   {
+    questionNum: 16,
+    title: 'In what store did Michael and Ilana meet for the first time?',
+    url: 'https://www.youtube.com/embed/b8iEjnhmy6Y',
+    options: [
+      'Target',
+      'BJs',
+      'Costco',
+      'Walmart',
+    ],
+    answer: 3,
+  },
+  {
     questionNum: 17,
     title: 'When Michael asked Ilana to marry him, what did she say?',
-    url: 'https://www.youtube.com/embed/PvUz6KlE0Uc',
+    url: 'https://www.youtube.com/embed/lTpkvcAgWvk',
     options: [
       'Yes',
       'Yes',
