@@ -19,7 +19,7 @@
           <div class="modal-footer">
             <slot name="footer">
               <button class="modal-default-button" @click="$emit('close')">
-                Close
+                Answer
               </button>
             </slot>
           </div>
@@ -47,7 +47,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
     display: table;
-    transition: opacity .3s ease;
+    transition: opacity 0.8s ease;
   }
 
   .modal-wrapper {
@@ -63,7 +63,7 @@
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    transition: all .3s ease;
+    transition: all .8s ease;
     font-family: Helvetica, Arial, sans-serif;
   }
 

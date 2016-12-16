@@ -1,18 +1,18 @@
 <template>
   <div >
     <aside class='ribbon' @click="showQuestion = true" >{{ question }} </aside>
-    <modal v-show="showQuestion" @close="modalClosed()" class="question-text">
+    <modal v-if="showQuestion" @close="modalClosed()" class="question-text">
       <h2 slot="header">{{ title }}</h2>
       <iframe slot="body" width="560" height="315" :src="url" frameborder="0" allowfullscreen></iframe>
     </modal>
-    <div v-show="showAnswers">
+    <div :key="questionNum" v-show="showAnswers">
       <div v-if="imgOptions" class="imageOptions">
         <figure v-for="(imgOption, index) in imgOptions">
           <img :src="imgOption" height="200" width="100" class="imageOption" />
           <figcaption>{{ index + 1 }}</figcaption>
         </figure>
       </div>
-      <div :key="question" v-for="(option, index) in options" @click="nextQuestion(index)" class="option">
+      <div v-for="(option, index) in options" @click="nextQuestion(index)" class="option">
         {{ option }}
       </div>
     </div>
@@ -28,6 +28,7 @@
       return {
         url: questions[this.$route.params.num].url,
         question: 'Start Quiz',
+        questionNum: questions[this.$route.params.num].questionNum,
         options: questions[this.$route.params.num].options,
         answer: questions[this.$route.params.num].answer,
         title: questions[this.$route.params.num].title,
@@ -40,12 +41,13 @@
     watch: {
       $route(to) {
         this.url = questions[to.params.num].url;
-        this.question = `Question ${questions[this.$route.params.num].questionNum}`;
+        this.questionNum = questions[to.params.num].questionNum;
+        this.question = `Question ${questions[to.params.num].questionNum}`;
         this.options = questions[to.params.num].options;
         this.answer = questions[to.params.num].answer;
         this.title = questions[to.params.num].title;
         this.imgOptions = questions[to.params.num].imgOptions;
-        this.showQuestion = false;
+        this.showQuestion = true;
         this.showAnswers = false;
       },
     },
