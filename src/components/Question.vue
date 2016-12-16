@@ -1,11 +1,13 @@
 <template>
-  <div :key="questionNum">
-    <button @click="showQuestion = true" > Question {{ questionNum }} </button>
-    <modal v-if="showQuestion" @close="showQuestion = false" class="question-text">
-      <div slot="header">{{ title }}</div>
+  <div >
+    <aside class='ribbon' @click="showQuestion = true" >Question {{ questionNum }} </aside>
+    <modal v-show="showQuestion" @close="modalClosed()" class="question-text">
+      <h2 slot="header">{{ title }}</h2>
       <iframe slot="body" width="560" height="315" :src="url" frameborder="0" allowfullscreen></iframe>
     </modal>
-    <div v-for="option in options" @click="nextQuestion()" class="option">{{ option }}</div>
+    <div :key="questionNum" v-show="showAnswers" v-for="option in options" @click="nextQuestion()" class="option">
+      {{ option }}
+    </div>
   </div>
 </template>
 <script>
@@ -22,6 +24,7 @@
         answer: questions[this.$route.params.num].answer,
         title: questions[this.$route.params.num].title,
         showQuestion: false,
+        showAnswers: false,
       };
     },
     watch: {
@@ -31,6 +34,8 @@
         this.options = questions[to.params.num].options;
         this.answer = questions[to.params.num].answer;
         this.title = questions[to.params.num].title;
+        this.showQuestion = false;
+        this.showAnswers = false;
       },
     },
     components: {
@@ -39,12 +44,21 @@
     methods: {
       nextQuestion() {
         const nextQuestionNum = parseInt(this.$route.params.num, 10) + 1;
-        this.$router.replace({ path: `${nextQuestionNum}` });
+        this.$router.push({ path: `${nextQuestionNum}` });
+      },
+      modalClosed() {
+        this.showQuestion = false;
+        this.showAnswers = true;
       },
     },
   };
 </script>
 <style>
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body{
+  font-family: Open Sans, sans-serif;
+}
+
 .option{
   width:60%;
   height:30px;
@@ -61,10 +75,73 @@
   border-radius: 25px;
   line-height: 150%;
   flex: 1 100%;
+  font-family: Open Sans, sans-serif;
 }
 
 .option:hover{
     border:#FC0 solid 2px;
     color:#FC0;
+}
+.modal-default-button {
+  font-family: Open Sans, sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width:100%
+}
+
+.modal-default-button:hover {
+    border:#FC0 solid 2px;
+    color:#FC0;
+}
+h1, h2 {
+  font-weight: normal;
+}
+
+aside {
+  margin-bottom: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 38px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  width: 80%;
+  font-family: Open Sans, sans-serif;
+  font-size:24px
+}
+aside:hover {
+  top: -1px;
+}
+aside:active {
+  top: 1px;
+}
+aside.ribbon {
+  background-color: #7DE3C8;
+}
+aside.ribbon:before, aside.ribbon:after {
+  top: 5px;
+  z-index: -10;
+}
+aside.ribbon:before {
+  border-color: #53dab6 #53dab6 #53dab6 transparent;
+  left: -25px;
+  border-width: 17px;
+}
+aside.ribbon:after {
+  border-color: #53dab6 transparent #53dab6 #53dab6;
+  right: -25px;
+  border-width: 17px;
+}
+
+aside:before, aside:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0;
 }
 </style>

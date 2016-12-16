@@ -19,7 +19,7 @@
           <div class="modal-footer">
             <slot name="footer">
               <button class="modal-default-button" @click="$emit('close')">
-                OK
+                Close
               </button>
             </slot>
           </div>
@@ -37,7 +37,7 @@
     },
   };
 </script>
-<style scoped>
+<style>
   .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -57,6 +57,7 @@
 
   .modal-container {
     width: 600px;
+    height: 500px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;

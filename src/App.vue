@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <img width="200" height="200" src="./assets/questionMark.png">
     <hello></hello>
-    <router-link to="/question/0">Start Quiz</router-link>
     <transition name="slide-fade">
       <router-view></router-view>
     </transition>
@@ -18,6 +16,9 @@ export default {
   components: {
     Hello,
     Question,
+  },
+  data() {
+    return { startQuiz: true };
   },
 };
 </script>
@@ -37,5 +38,9 @@ export default {
 .slide-fade-enter, .slide-fade-leave-active {
   transform: translateX(10px);
   opacity: 0;
+}
+
+body{
+  background-color: #e7e5e4;
 }
 </style>

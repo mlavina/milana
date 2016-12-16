@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/question/:num', component: Question },
+  { path: '/', redirect: '/question/0' },
 ];
 
 const router = new VueRouter({
