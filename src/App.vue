@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img width="200" height="200" src="./assets/questionMark.png">
     <hello></hello>
-    <question></question>
+    <router-link to="/question/0">Start Quiz</router-link>
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -27,5 +30,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.slide-fade-enter-active {
+  transition: all 3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-active {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
