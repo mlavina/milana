@@ -12,7 +12,7 @@
           <figcaption>{{ index + 1 }}</figcaption>
         </figure>
       </div>
-      <div :key="questionNum" v-for="option in options" @click="nextQuestion()" class="option">
+      <div :key="question" v-for="(option, index) in options" @click="nextQuestion(index)" class="option">
         {{ option }}
       </div>
     </div>
@@ -34,6 +34,7 @@
         imgOptions: questions[this.$route.params.num].imgOptions,
         showQuestion: false,
         showAnswers: false,
+        score: 0,
       };
     },
     watch: {
@@ -52,12 +53,19 @@
       Modal,
     },
     methods: {
-      nextQuestion() {
+      nextQuestion(index) {
+        if (this.answer === index) {
+          this.score += 1;
+        }
         const nextQuestionNum = parseInt(this.$route.params.num, 10) + 1;
-        this.$router.push({ path: `${nextQuestionNum}` });
+        if (nextQuestionNum >= questions.length) {
+          this.$router.push({ path: '../score', query: { amount: this.score, total: questions.length } });
+        } else {
+          this.$router.push({ path: `${nextQuestionNum}` });
+        }
       },
       modalClosed() {
-        this.question = this.question = `Question ${questions[this.$route.params.num].questionNum}`;
+        this.question = `Question ${questions[this.$route.params.num].questionNum}`;
         this.showQuestion = false;
         this.showAnswers = true;
       },

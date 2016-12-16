@@ -4,12 +4,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App';
 import Question from './components/Question';
+import Score from './components/Score';
 
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/question/:num', component: Question },
   { path: '/', redirect: '/question/0' },
+  { path: '/score', component: Score },
 ];
 
 const router = new VueRouter({
